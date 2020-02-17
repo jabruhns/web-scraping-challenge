@@ -17,7 +17,7 @@
         <div class="container">
             <div class="jumbotron text-center">
                 <h1>Mission to Mars</h1>
-                <p><a href="/scrape" role="button">Scrape New Data</a></p>
+                <p><a href="/../scrape" role="button">Scrape New Data</a></p>
             </div>
         </div>
     </header>
@@ -25,8 +25,8 @@
         <div class="row">
             <div class="col-md-12">
                 <h1 class="heading">Latest Mars News
-                    <h2 class="heading">{{ mars.news_title }}</h2>
-                    <p>{{ mars.news_paragraph }}</p>
+                    <h2 class="heading">{{ mars_results.title }}</h2>
+                    <p>{{ mars_results.paragraph }}</p>
             </div>
         </div>
     </div>
@@ -34,7 +34,7 @@
         <div class="row">
             <div class="col-md-8">
                 <h2 class="heading"><strong>Featured Mars Image</strong></h2>
-                <img src="{{ mars.full_image_url }}" class="img-responsive" alt="Mars Images">
+                <img src="{{ mars_results.image_url }}" class="img-responsive" alt="Mars Images">
                 <br>
             </div>
         </div>
@@ -44,13 +44,13 @@
             <div class="panel-body">
                 <h3>Current Weather on Mars</h3>
                 <hr>
-                <p>{{mars.mars_weather}}</p>
+                <p>{{mars_results.mars_weather}}</p>
             </div>
             <div class="col-md-12">
                 <h3>Mars Facts</h3>
                 <hr>
                 <table class="dataframe">
-                    {{mars.mars_html_table|safe}}
+                    {{mars_results.fact_table}
                 </table>
             </div>
 
@@ -63,20 +63,20 @@
             <h1 class="heading text-center"><strong>Mars Hemisphere</strong></h2>
                 <div class="col-md-6">
                     <div class="col-md-12">
-                        {% for image in mars.mars_hemispheres[0:2] %}
-                        <img class="img img-thumbnail" src="{{image['img_url']}}" alt="hemisphere" style="width:50%;">
+                        {% for image in mars_results.image_urls[0:2] %}
+                        <img class="img img-thumbnail" src="{{image['urls']}}" alt="hemisphere" style="width:50%;">
                         <div class="caption" style="font-weight: bold;">
-                            {{image['img_title']}}
+                            {{image['title']}}
                         </div>
                         {% endfor %}
                     </div>
                 </div>
                 <div class="col-md-6">
                     <div class="col-md-12">
-                        {% for image in mars.mars_hemispheres[2:4] %}
-                        <img src="{{pic['img_url']}}" alt="hemisphere" style="width:50%;">
+                        {% for image in mars_results.image_urls[2:4] %}
+                        <img src="{{image['urls']}}" alt="hemisphere" style="width:50%;">
                         <div class="caption " style="font-weight: bold;">
-                            {{pic['img_title']}}
+                            {{image['title']}}
                         </div>
                         {% endfor %}
                     </div>
