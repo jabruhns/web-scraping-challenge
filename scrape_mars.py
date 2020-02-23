@@ -68,3 +68,5 @@ for result in results:
     
     dict_of_these = {'title':title, 'urls': full_url}
     image_urls.append(dict_of_these)
+
+    browser.close()
